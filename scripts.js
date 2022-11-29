@@ -24,14 +24,21 @@ let createGrid = (desiredWidth) => {
         createRow(desiredWidth, "row-" + i);
     }
 }
-createGrid(16);
+//for 64
+/*
+width: 6px;
+    height: 6px;
+    aspect-ratio: 1 / 1;
+ */
+createGrid(64);
 
+//event handling here
 const pixels = document.querySelectorAll('.square');
 
-// we use the .forEach method to iterate through each button
+// we use the .forEach method to iterate through each square
 pixels.forEach((square) => {
 
-    // and for each one we add a 'click' listener
+    // and for each one we add a hover listener
     square.addEventListener('mouseover', () => {
         square.setAttribute('style', "background-color: black;");
     });

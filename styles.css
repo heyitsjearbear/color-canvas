@@ -17,16 +17,30 @@ body {
 
 .square {
     color: rgba(0, 0, 0, 0);
-    width: 20px;
-    height: 20px;
+    width: 6px;
+    height: 6px;
     aspect-ratio: 1 / 1;
     background-color: white;
-    margin: .5px;
     border-color: black;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+    margin:10px;
 }
 
 .row{
     display: flex;
-    justify-content: center;
 }
 
+.controls-labels-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls-labels-buttons .controls{
+    border-radius: 12px;
+    margin:10px;
+}
