@@ -22,6 +22,13 @@ for (let i = 1; i <= 16; i++) {
     createRow(16, "row-" + i);
 }
 
+const pixels = document.querySelectorAll('.square');
 
+// we use the .forEach method to iterate through each button
+pixels.forEach((square) => {
 
-
+    // and for each one we add a 'click' listener
+    square.addEventListener('mouseover', () => {
+        square.setAttribute('style', "background-color: white;");
+    });
+  });
