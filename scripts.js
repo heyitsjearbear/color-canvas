@@ -19,11 +19,14 @@ let createRow = (numOfSquares,rowNumber) => {
     gridContainer.appendChild(newRow);
 };
 
+//function creates whole grid
 let createGrid = (desiredWidth) => {
     for (let i = 1; i <= desiredWidth; i++) {
         createRow(desiredWidth, "row-" + i);
     }
 }
+
+
 //for 64
 /*
 width: 6px;
@@ -31,6 +34,8 @@ width: 6px;
     aspect-ratio: 1 / 1;
  */
 createGrid(64);
+
+
 
 //event handling here
 const pixels = document.querySelectorAll('.square');
@@ -42,4 +47,12 @@ pixels.forEach((square) => {
     square.addEventListener('mouseover', () => {
         square.setAttribute('style', "background-color: black;");
     });
-  });
+});
+
+//handle the event where user wants to reset color of grid
+const reset = document.querySelector('#reset-button');
+reset.addEventListener('click', () => {
+    pixels.forEach((square) => {
+        square.setAttribute('style', "background-color: white:");
+    });
+});
