@@ -33,7 +33,8 @@ width: 6px;
     height: 6px;
     aspect-ratio: 1 / 1;
  */
-createGrid(64);
+//for 20 width and height aspect-ratio: 1 / 1;
+createGrid(16);
 
 
 
@@ -53,6 +54,6 @@ pixels.forEach((square) => {
 const reset = document.querySelector('#reset-button');
 reset.addEventListener('click', () => {
     pixels.forEach((square) => {
-        square.setAttribute('style', "background-color: white:");
+        square.setAttribute('style', "background-color: white;");
     });
 });
