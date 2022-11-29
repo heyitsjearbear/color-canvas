@@ -18,9 +18,13 @@ let createRow = (numOfSquares,rowNumber) => {
     }
     gridContainer.appendChild(newRow);
 };
-for (let i = 1; i <= 16; i++) {
-    createRow(16, "row-" + i);
+
+let createGrid = (desiredWidth) => {
+    for (let i = 1; i <= desiredWidth; i++) {
+        createRow(desiredWidth, "row-" + i);
+    }
 }
+createGrid(16);
 
 const pixels = document.querySelectorAll('.square');
 
@@ -29,6 +33,6 @@ pixels.forEach((square) => {
 
     // and for each one we add a 'click' listener
     square.addEventListener('mouseover', () => {
-        square.setAttribute('style', "background-color: white;");
+        square.setAttribute('style', "background-color: black;");
     });
   });
