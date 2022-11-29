@@ -11,11 +11,17 @@ let createRow = (numOfSquares,rowNumber) => {
     for (let i = 1; i <= numOfSquares; i++){
         let newSquare = document.createElement("div");
         newSquare.classList.add("square");
-        newSquare.textContent = i;
+        newSquare.textContent = "";
         
         //append to row that was just created
         newRow.appendChild(newSquare);
     }
     gridContainer.appendChild(newRow);
 };
-createRow(4,"row-1");
+for (let i = 1; i <= 16; i++) {
+    createRow(16, "row-" + i);
+}
+
+
+
+

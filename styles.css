@@ -12,19 +12,21 @@
 
 body {
   animation: transitionIn 0.75s;
+  background-color: rgb(35, 161, 161);
 }
 
 .square {
     color: rgba(0, 0, 0, 0);
     width: 20px;
     height: 20px;
+    aspect-ratio: 1 / 1;
     background-color: gray;
     margin: .5px;
+    border-color: black;
 }
 
-#row-1{
+.row{
     display: flex;
-    
     justify-content: center;
 }
 
