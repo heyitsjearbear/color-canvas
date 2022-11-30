@@ -27,30 +27,33 @@ let createRow = (numOfSquares, rowNumber, pixelSize) => {
 
 //function creates whole grid
 let createGrid = (desiredWidth, pixelSize) => {
-  console.log(`Resizing grid to ${desiredWidth}x${desiredWidth}`)
+  console.log(`Resizing grid to ${desiredWidth}x${desiredWidth}`);
   for (let i = 1; i <= desiredWidth; i++) {
     createRow(desiredWidth, "row-" + i, pixelSize);
   }
 };
-
-
+let getRandomRGBValue = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+};
 let controlFunctionality = (pixelSize) => {
   //on website load select black color as default link
   defaultColorSelected = true;
   rainbowColorSelected = false;
   //on button click for rainbow mode, turn off default and turn on rainbow mode
-  const rainbowColor = document.querySelector('#rainbow-color');
-  rainbowColor.addEventListener('click', () => {
+  const rainbowColor = document.querySelector("#rainbow-color");
+  rainbowColor.addEventListener("click", () => {
     rainbowColorSelected = true;
     defaultColorSelected = false;
-    console.log('rainbow mode selected');
+    console.log("rainbow mode selected");
   });
   //opposite logic for clicking on default color
-  const defaultColor = document.querySelector('#default-color');
-  defaultColor.addEventListener('click', () => {
+  const defaultColor = document.querySelector("#default-color");
+  defaultColor.addEventListener("click", () => {
     rainbowColorSelected = false;
     defaultColorSelected = true;
-    console.log('default mode selected');
+    console.log("default mode selected");
   });
   //event handling here
   const pixels = document.querySelectorAll(".square");
@@ -59,10 +62,18 @@ let controlFunctionality = (pixelSize) => {
     // and for each one we add a hover listener
     square.addEventListener("mouseover", () => {
       console.log("coloring square");
-      square.setAttribute(
-        "style",
-        `background-color: black; width: ${pixelSize}px; height: ${pixelSize}px;`
-      );
+      if (rainbowColorSelected==true) {
+        square.setAttribute(
+          "style",
+          `background-color: rgb(${getRandomRGBValue(0,256)}, ${getRandomRGBValue(0,256)}, ${getRandomRGBValue(0,256)}); width: ${pixelSize}px; height: ${pixelSize}px;`
+        );
+      }
+      else {
+        square.setAttribute(
+          "style",
+          `background-color: black; width: ${pixelSize}px; height: ${pixelSize}px;`
+        );
+      }
     });
   });
   //handle the event where user wants to reset color of grid
@@ -76,7 +87,6 @@ let controlFunctionality = (pixelSize) => {
     });
   });
 };
-
 
 //resize grid to 16x16
 const resize16 = document.getElementById("sixteen-size");
