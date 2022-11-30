@@ -32,6 +32,7 @@ let createGrid = (desiredWidth, pixelSize) => {
   }
 };
 
+//TODO write functions to simplify repeated code.
 
 //if user clicks 16x16
 const resize16 = document.getElementById("sixteen-size");
