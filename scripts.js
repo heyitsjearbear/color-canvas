@@ -42,7 +42,7 @@ let buttonEnabled = (button) => {
   button.setAttribute('style', 'background-color: #242F3B');
 };
 let buttonDisabled = (button) => {
-  button.setAttribute('style', 'background-color: #D42819');
+  button.setAttribute('style', 'background-color: white');
 };
 
 const defaultColor = document.querySelector("#default-color");
@@ -122,6 +122,8 @@ const resize64 = document.getElementById("sixtyfour-size");
 
 //resize grid to 16x16
 resize16.addEventListener("click", () => {
+  buttonEnabled(defaultColor);
+  buttonDisabled(rainbowColor);
   sixteenResizeSelected = true;
   sixtyfourResizeSelected = false;
   if (sixteenResizeSelected == true) {
@@ -140,6 +142,8 @@ resize16.addEventListener("click", () => {
 
 //resize grid to 64x64
 resize64.addEventListener("click", () => {
+  buttonEnabled(defaultColor);
+  buttonDisabled(rainbowColor);
   sixteenResizeSelected = false;
   sixtyfourResizeSelected = true;
   if (sixtyfourResizeSelected == true) {
