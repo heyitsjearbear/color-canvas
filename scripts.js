@@ -37,23 +37,52 @@ let getRandomRGBValue = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 };
+//function will style button when it is enabled
+let buttonEnabled = (button) => {
+  button.setAttribute('style', 'background-color: #242F3B');
+};
+let buttonDisabled = (button) => {
+  button.setAttribute('style', 'background-color: #D42819');
+};
+
+const defaultColor = document.querySelector("#default-color");
+const rainbowColor = document.querySelector("#rainbow-color");
 let controlFunctionality = (pixelSize) => {
-  //on website load select black color as default link
-  defaultColorSelected = true;
+  defaultColorSelected = false;
+  //here we initalize rest of the buttons to be false since they aren't clicked
+  //when website is first loaded
   rainbowColorSelected = false;
+  sixteenResizeSelected = false;
+  sixtyfourResizeSelected = false;
   //on button click for rainbow mode, turn off default and turn on rainbow mode
-  const rainbowColor = document.querySelector("#rainbow-color");
+  
   rainbowColor.addEventListener("click", () => {
+    console.log("rainbow mode selected");
     rainbowColorSelected = true;
     defaultColorSelected = false;
-    console.log("rainbow mode selected");
+    if (rainbowColorSelected == true) {
+      buttonEnabled(rainbowColor);
+      buttonDisabled(defaultColor);
+    }
+    else {
+      buttonEnabled(defaultColor);
+      buttonDisabled(rainbowColor);
+    }
   });
   //opposite logic for clicking on default color
-  const defaultColor = document.querySelector("#default-color");
+  
   defaultColor.addEventListener("click", () => {
+    console.log("default mode selected");
     rainbowColorSelected = false;
     defaultColorSelected = true;
-    console.log("default mode selected");
+    if (defaultColorSelected == true) {
+      buttonEnabled(defaultColor);
+      buttonDisabled(rainbowColor);
+    }
+    else {
+      buttonEnabled(rainbowColor);
+      buttonDisabled(defaultColor);
+    }
   });
   //event handling here
   const pixels = document.querySelectorAll(".square");
@@ -88,9 +117,21 @@ let controlFunctionality = (pixelSize) => {
   });
 };
 
-//resize grid to 16x16
 const resize16 = document.getElementById("sixteen-size");
+const resize64 = document.getElementById("sixtyfour-size");
+
+//resize grid to 16x16
 resize16.addEventListener("click", () => {
+  sixteenResizeSelected = true;
+  sixtyfourResizeSelected = false;
+  if (sixteenResizeSelected == true) {
+    buttonEnabled(resize16);
+    buttonDisabled(resize64);
+  }
+  else {
+    buttonEnabled(resize64);
+    buttonDisabled(resize16);
+  }
   //here we are making sure that the webpage has no div
   gridContainer.innerHTML = "";
   createGrid(16, 20);
@@ -98,8 +139,17 @@ resize16.addEventListener("click", () => {
 });
 
 //resize grid to 64x64
-const resize64 = document.getElementById("sixtyfour-size");
 resize64.addEventListener("click", () => {
+  sixteenResizeSelected = false;
+  sixtyfourResizeSelected = true;
+  if (sixtyfourResizeSelected == true) {
+    buttonEnabled(resize64);
+    buttonDisabled(resize16);
+  }
+  else {
+    buttonEnabled(resize16);
+    buttonDisabled(resize64);
+  }
   //here we are making sure that the webpage has no div
   gridContainer.innerHTML = "";
   createGrid(64, 6);
