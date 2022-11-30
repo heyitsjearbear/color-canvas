@@ -63,5 +63,28 @@ reset.addEventListener("click", () => {
 });
 
 //if user clicks 64x64
+const resize64 = document.getElementById("sixtyfour-size");
+resize64.addEventListener("click", () => {
+  console.log("Resizing grid to 64x64.");
+  createGrid(64,6);
+  //event handling here
+  const pixels = document.querySelectorAll(".square");
+
+  // we use the .forEach method to iterate through each square
+  pixels.forEach((square) => {
+    // and for each one we add a hover listener
+      square.addEventListener("mouseover", () => {
+        console.log('coloring square')
+        square.setAttribute("style", "background-color: black; width: 6px; height 6px;");
+    });
+  });
+    //handle the event where user wants to reset color of grid
+const reset = document.querySelector("#reset-button");
+reset.addEventListener("click", () => {
+  pixels.forEach((square) => {
+    square.setAttribute("style", "background-color: white; width: 6px; height 6px;");
+  });
+});
+});
 
 
