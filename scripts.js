@@ -27,20 +27,14 @@ let createRow = (numOfSquares, rowNumber, pixelSize) => {
 
 //function creates whole grid
 let createGrid = (desiredWidth, pixelSize) => {
+  console.log(`Resizing grid to ${desiredWidth}x${desiredWidth}`)
   for (let i = 1; i <= desiredWidth; i++) {
     createRow(desiredWidth, "row-" + i, pixelSize);
   }
 };
 
-//TODO write functions to simplify repeated code.
 
-//if user clicks 16x16
-const resize16 = document.getElementById("sixteen-size");
-resize16.addEventListener("click", () => {
-  //here we are making sure that the webpage has no div
-  gridContainer.innerHTML = "";
-  console.log("Resizing grid to 16x16.");
-  createGrid(16, 20);
+let controlFunctionality = (pixelSize) => {
   //event handling here
   const pixels = document.querySelectorAll(".square");
 
@@ -51,7 +45,7 @@ resize16.addEventListener("click", () => {
       console.log("coloring square");
       square.setAttribute(
         "style",
-        "background-color: black; width: 20px; height 20px;"
+        `background-color: black; width: ${pixelSize}px; height: ${pixelSize}px;`
       );
     });
   });
@@ -61,41 +55,27 @@ resize16.addEventListener("click", () => {
     pixels.forEach((square) => {
       square.setAttribute(
         "style",
-        "background-color: white; width: 20px; height 20px;"
+        `background-color: white; width: ${pixelSize}px; height: ${pixelSize}px;`
       );
     });
   });
+};
+
+
+//resize grid to 16x16
+const resize16 = document.getElementById("sixteen-size");
+resize16.addEventListener("click", () => {
+  //here we are making sure that the webpage has no div
+  gridContainer.innerHTML = "";
+  createGrid(16, 20);
+  controlFunctionality(20);
 });
 
-//if user clicks 64x64
+//resize grid to 64x64
 const resize64 = document.getElementById("sixtyfour-size");
 resize64.addEventListener("click", () => {
   //here we are making sure that the webpage has no div
   gridContainer.innerHTML = "";
-  console.log("Resizing grid to 64x64.");
   createGrid(64, 6);
-  //event handling here
-  const pixels = document.querySelectorAll(".square");
-
-  // we use the .forEach method to iterate through each square
-  pixels.forEach((square) => {
-    // and for each one we add a mousehover listener
-    square.addEventListener("mouseover", () => {
-      console.log("coloring square");
-      square.setAttribute(
-        "style",
-        "background-color: black; width: 6px; height 6px;"
-      );
-    });
-  });
-  //handle the event where user wants to reset color of grid
-  const reset = document.querySelector("#reset-button");
-  reset.addEventListener("click", () => {
-    pixels.forEach((square) => {
-      square.setAttribute(
-        "style",
-        "background-color: white; width: 6px; height 6px;"
-      );
-    });
-  });
+  controlFunctionality(6);
 });
