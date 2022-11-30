@@ -35,9 +35,25 @@ let createGrid = (desiredWidth, pixelSize) => {
 
 
 let controlFunctionality = (pixelSize) => {
+  //on website load select black color as default link
+  defaultColorSelected = true;
+  rainbowColorSelected = false;
+  //on button click for rainbow mode, turn off default and turn on rainbow mode
+  const rainbowColor = document.querySelector('#rainbow-color');
+  rainbowColor.addEventListener('click', () => {
+    rainbowColorSelected = true;
+    defaultColorSelected = false;
+    console.log('rainbow mode selected');
+  });
+  //opposite logic for clicking on default color
+  const defaultColor = document.querySelector('#default-color');
+  defaultColor.addEventListener('click', () => {
+    rainbowColorSelected = false;
+    defaultColorSelected = true;
+    console.log('default mode selected');
+  });
   //event handling here
   const pixels = document.querySelectorAll(".square");
-
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
     // and for each one we add a hover listener
