@@ -46,7 +46,7 @@ resize16.addEventListener("click", () => {
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
     // and for each one we add a hover listener
-    square.addEventListener("mousedown", () => {
+    square.addEventListener("mouseover", () => {
       console.log("coloring square");
       square.setAttribute(
         "style",
@@ -78,8 +78,8 @@ resize64.addEventListener("click", () => {
 
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
-    // and for each one we add a hover listener
-    square.addEventListener("mousedown", () => {
+    // and for each one we add a mousehover listener
+    square.addEventListener("mouseover", () => {
       console.log("coloring square");
       square.setAttribute(
         "style",

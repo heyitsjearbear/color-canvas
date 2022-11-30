@@ -46,3 +46,10 @@ body {
     border-radius: 12px;
     margin:10px;
 }
+
+@media (max-width:500px){
+  .main{
+  flex-direction: column;
+  align-items: center;
+  }
+}
