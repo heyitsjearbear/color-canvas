@@ -32,13 +32,6 @@ let createGrid = (desiredWidth, pixelSize) => {
   }
 };
 
-//for 64
-/*
-width: 6px;
-    height: 6px;
-    aspect-ratio: 1 / 1;
- */
-//for 20 width and height aspect-ratio: 1 / 1;
 
 //if user clicks 16x16
 const resize16 = document.getElementById("sixteen-size");
@@ -53,7 +46,7 @@ resize16.addEventListener("click", () => {
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
     // and for each one we add a hover listener
-    square.addEventListener("mouseover", () => {
+    square.addEventListener("mousedown", () => {
       console.log("coloring square");
       square.setAttribute(
         "style",
@@ -86,7 +79,7 @@ resize64.addEventListener("click", () => {
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
     // and for each one we add a hover listener
-    square.addEventListener("mouseover", () => {
+    square.addEventListener("mousedown", () => {
       console.log("coloring square");
       square.setAttribute(
         "style",
