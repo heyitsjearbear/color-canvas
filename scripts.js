@@ -1,6 +1,9 @@
-//grab the container that we will eventually append to
 const gridContainer = document.querySelector(".grid");
-//create a function that will create one row of passed parameter squares
+const defaultColor = document.querySelector("#default-color");
+const rainbowColor = document.querySelector("#rainbow-color");
+const resize16 = document.getElementById("sixteen-size");
+const resize64 = document.getElementById("sixtyfour-size");
+//FUNCTIONS
 let createRow = (numOfSquares, rowNumber, pixelSize) => {
   //create row div itself
   let newRow = document.createElement("div");
@@ -23,8 +26,6 @@ let createRow = (numOfSquares, rowNumber, pixelSize) => {
   }
   gridContainer.appendChild(newRow);
 };
-
-//function creates whole grid
 let createGrid = (desiredWidth, pixelSize) => {
   console.log(`Resizing grid to ${desiredWidth}x${desiredWidth}`);
   for (let i = 1; i <= desiredWidth; i++) {
@@ -36,16 +37,12 @@ let getRandomRGBValue = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 };
-//function will style button when it is enabled
 let buttonEnabled = (button) => {
   button.setAttribute("style", "background-color: #007CC7");
 };
 let buttonDisabled = (button) => {
   button.setAttribute("style", "background-color: white");
 };
-
-const defaultColor = document.querySelector("#default-color");
-const rainbowColor = document.querySelector("#rainbow-color");
 let controlFunctionality = (pixelSize) => {
   defaultColorSelected = false;
   //here we initalize rest of the buttons to be false since they aren't clicked
@@ -128,9 +125,6 @@ let controlFunctionality = (pixelSize) => {
     });
   });
 };
-
-const resize16 = document.getElementById("sixteen-size");
-const resize64 = document.getElementById("sixtyfour-size");
 
 //resize grid to 16x16
 resize16.addEventListener("click", () => {
