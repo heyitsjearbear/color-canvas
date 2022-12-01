@@ -39,7 +39,7 @@ let getRandomRGBValue = (min, max) => {
 };
 //function will style button when it is enabled
 let buttonEnabled = (button) => {
-  button.setAttribute('style', 'background-color: #242F3B');
+  button.setAttribute('style', 'background-color: #007CC7');
 };
 let buttonDisabled = (button) => {
   button.setAttribute('style', 'background-color: white');

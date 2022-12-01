@@ -11,12 +11,14 @@
 }
 
 body {
+  font-family: 'Lobster', cursive;
   animation: transitionIn 0.75s;
-  background-color: #23a1a1;
+  background-color: #1a435e;
 }
 
 .heading{
     text-align: center;
+    color: #EEFBFB
 }
 
 .square {
@@ -36,6 +38,10 @@ body {
     display: flex;
 }
 
+.controls-title{
+  text-align: center;
+  color: #4DA8DA;
+}
 .controls-labels-buttons{
     display: flex;
     flex-direction: column;
