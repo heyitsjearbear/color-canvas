@@ -56,6 +56,10 @@ body {
     border-radius: 12px;
     margin:10px;
 }
+.controls:hover:enabled{
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
 
 @media (max-width:500px){
   .main{
