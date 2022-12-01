@@ -14,7 +14,11 @@ body {
   font-family: 'Lobster', cursive;
   animation: transitionIn 0.75s;
   background-color: #1a435e;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
+
 
 .heading{
     text-align: center;

@@ -1,6 +1,5 @@
 //grab the container that we will eventually append to
 const gridContainer = document.querySelector(".grid");
-
 //create a function that will create one row of passed parameter squares
 let createRow = (numOfSquares, rowNumber, pixelSize) => {
   //create row div itself
@@ -39,10 +38,10 @@ let getRandomRGBValue = (min, max) => {
 };
 //function will style button when it is enabled
 let buttonEnabled = (button) => {
-  button.setAttribute('style', 'background-color: #007CC7');
+  button.setAttribute("style", "background-color: #007CC7");
 };
 let buttonDisabled = (button) => {
-  button.setAttribute('style', 'background-color: white');
+  button.setAttribute("style", "background-color: white");
 };
 
 const defaultColor = document.querySelector("#default-color");
@@ -55,7 +54,7 @@ let controlFunctionality = (pixelSize) => {
   sixteenResizeSelected = false;
   sixtyfourResizeSelected = false;
   //on button click for rainbow mode, turn off default and turn on rainbow mode
-  
+
   rainbowColor.addEventListener("click", () => {
     console.log("rainbow mode selected");
     rainbowColorSelected = true;
@@ -63,14 +62,13 @@ let controlFunctionality = (pixelSize) => {
     if (rainbowColorSelected == true) {
       buttonEnabled(rainbowColor);
       buttonDisabled(defaultColor);
-    }
-    else {
+    } else {
       buttonEnabled(defaultColor);
       buttonDisabled(rainbowColor);
     }
   });
   //opposite logic for clicking on default color
-  
+
   defaultColor.addEventListener("click", () => {
     console.log("default mode selected");
     rainbowColorSelected = false;
@@ -78,8 +76,7 @@ let controlFunctionality = (pixelSize) => {
     if (defaultColorSelected == true) {
       buttonEnabled(defaultColor);
       buttonDisabled(rainbowColor);
-    }
-    else {
+    } else {
       buttonEnabled(rainbowColor);
       buttonDisabled(defaultColor);
     }
@@ -88,21 +85,36 @@ let controlFunctionality = (pixelSize) => {
   const pixels = document.querySelectorAll(".square");
   // we use the .forEach method to iterate through each square
   pixels.forEach((square) => {
+    drag = false;
+    window.addEventListener("mousedown", () => {
+      drag = true;
+    });
+    window.addEventListener("mouseup", () => {
+      drag = false;
+    });
     // and for each one we add a hover listener
     square.addEventListener("mouseover", () => {
-      console.log("coloring square");
-      if (rainbowColorSelected==true) {
-        square.setAttribute(
-          "style",
-          `background-color: rgb(${getRandomRGBValue(0,256)}, ${getRandomRGBValue(0,256)}, ${getRandomRGBValue(0,256)}); width: ${pixelSize}px; height: ${pixelSize}px;`
-        );
+      if (drag == true) {
+        console.log("coloring square");
+        if (rainbowColorSelected == true) {
+          square.setAttribute(
+            "style",
+            `background-color: rgb(${getRandomRGBValue(
+              0,
+              256
+            )}, ${getRandomRGBValue(0, 256)}, ${getRandomRGBValue(
+              0,
+              256
+            )}); width: ${pixelSize}px; height: ${pixelSize}px;`
+          );
+        } else {
+          square.setAttribute(
+            "style",
+            `background-color: black; width: ${pixelSize}px; height: ${pixelSize}px;`
+          );
+        }
       }
-      else {
-        square.setAttribute(
-          "style",
-          `background-color: black; width: ${pixelSize}px; height: ${pixelSize}px;`
-        );
-      }
+      yesColor = false;
     });
   });
   //handle the event where user wants to reset color of grid
@@ -129,8 +141,7 @@ resize16.addEventListener("click", () => {
   if (sixteenResizeSelected == true) {
     buttonEnabled(resize16);
     buttonDisabled(resize64);
-  }
-  else {
+  } else {
     buttonEnabled(resize64);
     buttonDisabled(resize16);
   }
@@ -149,8 +160,7 @@ resize64.addEventListener("click", () => {
   if (sixtyfourResizeSelected == true) {
     buttonEnabled(resize64);
     buttonDisabled(resize16);
-  }
-  else {
+  } else {
     buttonEnabled(resize16);
     buttonDisabled(resize64);
   }
